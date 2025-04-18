@@ -4,6 +4,8 @@ from constants import *
 # project it works fine.
 def main():
     pygame.init()
+    clock = pygame.time.Clock()
+    dt = 0
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
@@ -16,10 +18,15 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill(color=(0,0,0), rect=None, special_flags=0)
+        # Somehow removing pygame from the start here has fixed the code.
+        # I don't get it. Anywhom.
         pygame.display.flip()
-    # Infinite while-loop constantly sets the background to black and
-    # then resets the positions of objects onscreen to make sure it's
-    # keeping up with player placement
+        # Infinite while-loop constantly sets the background to black and
+        # then resets the positions of objects onscreen to make sure it's
+        # keeping up with player placement
+        clock.tick(60)
+        # This just caps the framerate at 60fps to support CPU
+        dt = clock.tick(60) / 1000
     pygame.quit()
 
 if __name__ == "__main__":
