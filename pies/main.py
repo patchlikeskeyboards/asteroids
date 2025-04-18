@@ -24,9 +24,8 @@ def main():
         # Infinite while-loop constantly sets the background to black and
         # then resets the positions of objects onscreen to make sure it's
         # keeping up with player placement
-        clock.tick(60)
-        # This just caps the framerate at 60fps to support CPU
         dt = clock.tick(60) / 1000
+        # This just caps the framerate at 60fps to support CPU
     pygame.quit()
 
 if __name__ == "__main__":
